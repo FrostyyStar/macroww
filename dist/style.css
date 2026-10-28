@@ -1,0 +1,151 @@
+.frame {
+  background-color: #d9d9d9;
+  border-radius: 9px;
+  overflow: hidden;
+  width: 450px;
+  height: 400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.frame .text-wrapper {
+  position: absolute;
+  top: 17px;
+  left: 140px;
+  width: 188px;
+  font-family: "Space Grotesk", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: #000000;
+  font-size: 40px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+/* ---- the four boxes (same size / position / look as the prototype) ---- */
+.frame .record-box,
+.frame .save-box,
+.frame .play-box,
+.frame .open-box,
+.frame .repeat-box,
+.frame .speed-box {
+  position: absolute;
+  width: 92px;
+  height: 92px;
+  background-color: #d9d9d9;
+  border-radius: 20px;
+  border: 1px solid #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.12s ease, transform 0.08s ease;
+}
+.frame .play-box   { top: 104px; left: 65px; }
+.frame .record-box { top: 104px; left: 179px; }
+.frame .save-box   { top: 104px; left: 292px; }
+.frame .open-box   { top: 221px; left: 179px; }
+.frame .repeat-box { top: 221px; left: 65px; }
+.frame .speed-box  { top: 221px; left: 292px; }
+
+/* ---- icons ---- */
+.frame .play-arrow   { width: 70px; height: 70px; aspect-ratio: 1; pointer-events: none; }
+.frame .screen-record,
+.frame .save-as,
+.frame .arrow-outward { width: 60px; height: 60px; aspect-ratio: 1; pointer-events: none; }
+
+/* ---- feedback: hover, press, active ---- */
+.frame .record-box:hover,
+.frame .save-box:hover,
+.frame .play-box:hover,
+.frame .open-box:hover,
+.frame .repeat-box:hover,
+.frame .speed-box:hover { background-color: #cbcbcb; }
+
+.frame .record-box:active,
+.frame .save-box:active,
+.frame .play-box:active,
+.frame .open-box:active,
+.frame .repeat-box:active,
+.frame .speed-box:active { background-color: #b9b9b9; transform: scale(0.96); }
+
+/* ---- Repeat / Speed: the value is the icon ---- */
+.frame .repeat-box,
+.frame .speed-box { flex-direction: column; gap: 3px; }
+
+.frame .opt-value {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.frame .opt-text {
+  font-family: "Space Grotesk", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  color: #000;
+}
+.frame .opt-inf { width: 48px; height: 26px; }
+.frame .opt-inf[hidden] { display: none; }
+.frame .opt-label {
+  font-family: "Space Grotesk", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+}
+/* tiny "tick" when the value changes */
+.frame .opt-value.bump { animation: opt-bump 0.18s ease-out; }
+@keyframes opt-bump {
+  0%   { transform: scale(0.8); }
+  60%  { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* "on" = this box is currently doing its thing (recording / playing):
+   inverted, and the icon becomes a stop square — click it again to stop. */
+.frame .on { background-color: #000000 !important; }
+.frame .on img { filter: invert(1); }
+
+.frame .record-box.on { animation: rec-pulse 1.3s ease-out infinite; }
+@keyframes rec-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.35); }
+  70%  { box-shadow: 0 0 0 12px rgba(0, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
+}
+.frame .paused { animation: pause-blink 1s steps(2, jump-none) infinite; }
+@keyframes pause-blink { 50% { opacity: 0.55; } }
+
+/* nothing to act on yet: dimmed, but still clickable so it can explain why */
+.frame .dim { opacity: 0.4; }
+
+/* ---- status text (added: gives the buttons somewhere to answer back) ---- */
+.frame .status {
+  position: absolute;
+  top: 336px;
+  left: 0;
+  width: 450px;
+  padding: 0 24px;
+  text-align: center;
+  font-family: "Space Grotesk", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.frame .hint {
+  position: absolute;
+  top: 368px;
+  left: 0;
+  width: 450px;
+  text-align: center;
+  font-family: "Space Grotesk", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.5);
+}

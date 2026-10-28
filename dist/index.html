@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>macroww</title>
+<link rel="stylesheet" href="globals.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="frame">
+  <div class="text-wrapper">macroww</div>
+
+  <button type="button" class="record-box" id="btn-record" title="Record (Ctrl+Alt+R)" aria-label="Record">
+    <img class="screen-record" id="img-record" src="assets/screen-record.svg" alt="" />
+  </button>
+  <button type="button" class="save-box" id="btn-save" title="Save macro as…" aria-label="Save macro as">
+    <img class="save-as" src="assets/save-as.svg" alt="" />
+  </button>
+  <button type="button" class="play-box" id="btn-play" title="Play (Ctrl+Alt+P)" aria-label="Play">
+    <img class="play-arrow" id="img-play" src="assets/play-arrow.svg" alt="" />
+  </button>
+  <button type="button" class="open-box" id="btn-open" title="Open a saved macro…" aria-label="Open macro">
+    <img class="arrow-outward" src="assets/arrow-outward.svg" alt="" />
+  </button>
+
+  <button type="button" class="repeat-box" id="btn-repeat" aria-label="Repeat">
+    <span class="opt-value" id="opt-repeat"><span class="opt-text" id="txt-repeat">1×</span><img class="opt-inf" id="img-inf" src="assets/infinity.svg" alt="" hidden /></span>
+    <span class="opt-label">repeat</span>
+  </button>
+  <button type="button" class="speed-box" id="btn-speed" aria-label="Speed">
+    <span class="opt-value" id="opt-speed"><span class="opt-text" id="txt-speed">1×</span></span>
+    <span class="opt-label">speed</span>
+  </button>
+
+  <div class="status" id="status" role="status" aria-live="polite">ready</div>
+  <div class="hint">Ctrl+Alt+R record &nbsp;·&nbsp; Ctrl+Alt+P play &nbsp;·&nbsp; Ctrl+Alt+Space pause</div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>
