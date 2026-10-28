@@ -1,0 +1,24 @@
+[package]
+name = "macroww"
+version = "0.1.0"
+description = "A cross-platform (Windows + Linux/X11) macro recorder"
+edition = "2021"
+rust-version = "1.77"
+
+[lib]
+name = "macroww_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# "serialize" enables Serialize/Deserialize on rdev's own Key/Button/EventType,
+# so the macro file format re-uses rdev's real types instead of a hand-rolled
+# (and easier to get subtly wrong) key-name mapping.
+rdev = { version = "0.5", features = ["serialize"] }
+# Native Save / Open file dialogs (called from Rust only).
+tauri-plugin-dialog = "2"
